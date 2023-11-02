@@ -46,11 +46,31 @@ Enfin, Spark, un framework de traitement des données distribué, a été config
 L'installation et la configuration de ces composants ont été essentielles pour créer un environnement robuste et fonctionnel capable de traiter et d'analyser efficacement les données en temps réel. Chaque composant a été soigneusement configuré pour garantir une intégration fluide et une performance optimale dans l'ensemble du pipeline de données.
 
 
-
 # Collecte des données en temps réel avec Kafka
-# Transformation et agrégation des données
-# Stockage des données dans Cassandra
-# Stockage des résultats agrégés dans MongoDB
+Pour la collecte des données en temps réel, nous avons développé un script Python nommé "Preducer.py". Ce script utilise la bibliothèque KafkaProducer pour envoyer les données collectées vers un topic Kafka spécifié.
+
+Le script commence par définir le nom du topic Kafka dans lequel les données seront publiées. Ensuite, il configure les paramètres de connexion à Kafka en spécifiant l'adresse et le port du serveur Kafka.
+
+Dans la boucle principale du script, nous avons utilisé la bibliothèque requests pour effectuer une requête vers l'API RandomUser.me et récupérer les données utilisateur. Nous avons ajouté des mécanismes de gestion des erreurs pour gérer les éventuelles exceptions liées aux requêtes HTTP ou au format JSON des réponses.
+
+Une fois les données récupérées, nous les avons sérialisées au format JSON à l'aide de la fonction json.dumps(). Ensuite, nous avons utilisé la méthode send() du KafkaProducer pour envoyer les données vers le topic Kafka spécifié. La méthode flush() est également appelée pour s'assurer que les données sont immédiatement écrites dans le topic.
+
+En cas d'erreur ou d'exception lors de la collecte ou de l'envoi des données, des messages d'erreur appropriés sont affichés pour faciliter le débogage.
+
+Pour éviter de saturer l'API RandomUser.me ou le serveur Kafka, nous avons ajouté une pause de 6 secondes entre chaque collecte de données.
+
+Ce script Python a été efficace pour collecter les données en temps réel à partir de l'API RandomUser.me et les envoyer vers le topic Kafka spécifié. Il a permis d'assurer une collecte continue et régulière des données, ce qui a constitué la première étape cruciale de notre pipeline de données en temps réel.
+
+# Transformation et agrégation des données et Stockage des données dans Cassandra et MongoDB
+
+Pour stocker les données collectées, nous avons utilisé deux bases de données : Cassandra et MongoDB. 
+
+Pour Cassandra, nous avons créé une connexion à l'aide de la bibliothèque Cassandra-Driver. Un keyspace nommé "jane_keyspace" a été créé en utilisant une stratégie de réplication simple avec un facteur de réplication de 1. Ensuite, nous avons défini une table appelée "users_table" avec des colonnes correspondant aux attributs des données collectées, tels que l'ID, le genre, le nom, l'adresse e-mail, le numéro de téléphone, etc. Les données ont été filtrées pour s'assurer que l'ID est non nul et que l'âge est supérieur ou égal à 18. Les données nettoyées ont ensuite été écrites en utilisant la fonction writeStream de Spark, avec les options appropriées pour indiquer le chemin de sauvegarde des checkpoints, le nom du keyspace et le nom de la table dans Cassandra. Ainsi, les données ont été stockées de manière incrémentielle au fur et à mesure de leur collecte.
+
+En ce qui concerne MongoDB, nous avons utilisé la bibliothèque Pymongo pour établir une connexion avec la base de données MongoDB locale. L'URI de connexion était "mongodb://localhost:27017", et nous avons défini le nom de la base de données comme "users_profiles" et le nom de la collection comme "user_collection". Cependant, le code pour l'écriture des données dans MongoDB a été commenté et n'a pas été exécuté.
+
+En conclusion, nous avons mis en place un système de stockage pour les données collectées en utilisant Cassandra et MongoDB. Les données ont été écrites dans Cassandra en utilisant Spark pour une sauvegarde incrémentielle, tandis que l'écriture des données dans MongoDB n'a pas été réalisée dans le code fourni. Ces étapes de stockage ont permis de créer une base solide pour le traitement ultérieur des données dans le pipeline.
+
 # Surveillance et validation des résultats
 
 # Visualisation des données à l'aide de tableaux de bord interactifs
