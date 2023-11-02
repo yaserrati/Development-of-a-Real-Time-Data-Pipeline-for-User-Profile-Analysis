@@ -29,11 +29,33 @@ En conclusion, la mise en place de ce pipeline de données en temps réel nous p
 
 
 
+# Objectifs du projet
+# Configuration de l'environnement
+# Collecte des données en temps réel avec Kafka
+# Transformation et agrégation des données
+# Stockage des données dans Cassandra
+# Stockage des résultats agrégés dans MongoDB
+# Surveillance et validation des résultats
+# Visualisation des données à l'aide de tableaux de bord interactifs
 
 
+# Mesures de sécurité et conformité avec le RGPD
+Dans le cadre de la conformité avec le RGPD, des mesures de sécurité ont été mises en place pour garantir la confidentialité et la protection des données sensibles. Parmi ces mesures, nous avons appliqué un processus de chiffrement sur certaines colonnes sensibles telles que l'email, le numéro de téléphone et l'adresse.
 
+Pour réaliser le chiffrement, nous avons utilisé l'algorithme de hachage SHA-256. Cet algorithme transforme les données en une empreinte numérique unique et irréversible. Ainsi, même en cas de compromission des données, il serait extrêmement difficile de retrouver les informations d'origine.
 
+Dans notre pipeline de données, nous avons utilisé la fonction sha2 de PySpark pour appliquer le chiffrement sur les colonnes concernées. Par exemple, le code suivant illustre le chiffrement des colonnes "email", "phone" et "address" :
+````
+#  encrypt  email, password,phone, and cell using SHA-256
+result_df = result_df.withColumn("email", F.sha2(result_df["email"], 256))
+result_df = result_df.withColumn("phone", F.sha2(result_df["phone"], 256))
+result_df = result_df.withColumn("address", F.sha2(result_df["address"], 256))
+````
+Ce processus de chiffrement renforce la protection des données sensibles en rendant les informations d'identification personnelles pratiquement indéchiffrables sans la clé correspondante. Ainsi, même en cas d'accès non autorisé aux données, les informations personnelles restent sécurisées.
 
+En appliquant ce chiffrement sur les colonnes sensibles, nous avons respecté les principes fondamentaux du RGPD en garantissant la confidentialité et la protection des données personnelles. Les données chiffrées peuvent être utilisées en toute sécurité pour des analyses ultérieures sans compromettre la vie privée des individus concernés.
+
+Il convient de noter que la sécurité et la protection des données ne se limitent pas au chiffrement. D'autres mesures de sécurité, telles que la gestion des accès et les politiques de confidentialité, doivent également être mises en place pour garantir une conformité complète avec les exigences du RGPD.
 
 # Conclusion :
 
