@@ -36,6 +36,7 @@ Cassandra, une base de données NoSQL haute performance, a été installée pour
 Kafka, une plateforme de streaming distribuée, a été installée pour la collecte et la diffusion en temps réel des données. Nous avons configuré les topics et les partitions pour assurer une ingestion efficace des données en streaming.
 
 MongoDB, une base de données orientée documents, a été utilisée pour stocker les résultats agrégés et faciliter la visualisation des données à l'aide de tableaux de bord interactifs. Nous avons configuré les collections et les index pour optimiser les performances de lecture et d'écriture.
+
 <img width="194" alt="image" src="https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/2f0e2ed4-aff9-4eac-8571-3be838c91dab">
 
 PyDash, une bibliothèque Python, a été utilisée pour créer des tableaux de bord interactifs permettant de visualiser les données en temps réel. Nous avons configuré les tableaux de bord en fonction des besoins spécifiques de l'organisation.
@@ -53,7 +54,7 @@ L'installation et la configuration de ces composants ont été essentielles pour
 # Surveillance et validation des résultats
 
 # Visualisation des données à l'aide de tableaux de bord interactifs
-
+![image](https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/40137349-52f6-42bf-8f06-2c325fe5b85d)
 
 # Mesures de sécurité et conformité avec le RGPD
 Dans le cadre de la conformité avec le RGPD, des mesures de sécurité ont été mises en place pour garantir la confidentialité et la protection des données sensibles. Parmi ces mesures, nous avons appliqué un processus de chiffrement sur certaines colonnes sensibles telles que l'email, le numéro de téléphone et l'adresse.
