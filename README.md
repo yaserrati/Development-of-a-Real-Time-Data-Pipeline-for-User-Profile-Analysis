@@ -29,11 +29,21 @@ En conclusion, la mise en place de ce pipeline de données en temps réel nous p
 La configuration de l'environnement pour la mise en place du pipeline de données en temps réel a été réalisée en installant et en configurant plusieurs composants clés. Les principaux composants déployés étaient ZooKeeper, Cassandra, Kafka, MongoDB, PyDash et Spark.
 
 ZooKeeper est un service de coordination distribué utilisé pour gérer la configuration, le suivi des états et la synchronisation des différents nœuds du cluster Kafka. Il a été installé et configuré pour garantir un fonctionnement stable et fiable de notre infrastructure.
+### To start zookeeper:
+````
+zookeeper-server-start.bat ..\..\config\zookeeper.properties
+````
+
 <img width="955" alt="image" src="https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/f34040f3-d55d-408a-a9ee-5d497403b0a3">
 
 Cassandra, une base de données NoSQL haute performance, a été installée pour stocker les données brutes et transformées. Nous avons configuré les paramètres de réplication et de partitionnement pour garantir la disponibilité et la scalabilité des données.
 
 Kafka, une plateforme de streaming distribuée, a été installée pour la collecte et la diffusion en temps réel des données. Nous avons configuré les topics et les partitions pour assurer une ingestion efficace des données en streaming.
+### To Start Kafka:
+````
+kafka-server-start.bat ..\..\config\server.properties
+````
+
 
 MongoDB, une base de données orientée documents, a été utilisée pour stocker les résultats agrégés et faciliter la visualisation des données à l'aide de tableaux de bord interactifs. Nous avons configuré les collections et les index pour optimiser les performances de lecture et d'écriture.
 
