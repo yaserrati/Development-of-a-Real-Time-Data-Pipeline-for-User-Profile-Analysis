@@ -84,7 +84,13 @@ En conclusion, nous avons mis en place un système de stockage pour les données
 # Surveillance et validation des résultats
 
 # Visualisation des données à l'aide de tableaux de bord interactifs
-![image](https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/40137349-52f6-42bf-8f06-2c325fe5b85d)
+
+<img width="874" alt="image" src="https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/9fe9b3ae-aff2-4eb7-ac96-6086537857ee">
+
+<img width="443" alt="image" src="https://github.com/yaserrati/Development-of-a-Real-Time-Data-Pipeline-for-User-Profile-Analysis/assets/88887542/19c40dd5-b436-41cf-b8c5-a8e250020cbf">
+
+
+
 
 # Mesures de sécurité et conformité avec le RGPD
 Dans le cadre de la conformité avec le RGPD, des mesures de sécurité ont été mises en place pour garantir la confidentialité et la protection des données sensibles. Parmi ces mesures, nous avons appliqué un processus de chiffrement sur certaines colonnes sensibles telles que l'email, le numéro de téléphone et l'adresse.
